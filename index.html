@@ -6,9 +6,23 @@
   <title>Mini PWA</title>
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#000000">
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 1rem; }
+    textarea { width: 100%; height: 6rem; font-family: monospace; box-sizing: border-box; }
+    table { border-collapse: collapse; margin-top: 1rem; }
+    th, td { border: 1px solid #999; padding: 4px 8px; text-align: left; }
+    #status { color: #666; }
+    #error { color: #b00; }
+    #out { overflow-x: auto; }
+  </style>
 </head>
 <body>
-  <h1>It works</h1>
-  <script>navigator.serviceWorker?.register('sw.js');</script>
+  <h1>SQLite query</h1>
+  <textarea id="sql">SELECT name FROM sqlite_master WHERE type = 'table';</textarea>
+  <br><button id="run" disabled>Run</button>
+  <span id="status">Loading database…</span>
+  <div id="error"></div>
+  <div id="out"></div>
+	<script type="module" src="app.js"></script>
 </body>
 </html>
